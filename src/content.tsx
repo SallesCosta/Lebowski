@@ -1,10 +1,6 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Flex } from '@chakra-ui/react'
-import { Sidebar } from './Components/sidebar/sidebar'
-import { LoginForm } from './Components/loginForm'
-import { Card } from './Components/card'
 import { Lista } from './hooks/hooks'
 import { ChangeEventHandler, MouseEventHandler } from 'react'
-import { Github } from './Components/github/github'
 
 type ContentProps = {
   value: string,
@@ -34,31 +30,18 @@ export function Content({
       h='89vh'
       bg={bgColor}
       color={color}
-    // ml='10px'
     >
       <Flex>
-        <Sidebar />
         <Tabs isLazy w='100%'>
           <TabList>
-            <Tab>Login</Tab>
-            <Tab>GitHub</Tab>
-            <Tab>Estatisticas</Tab>
-            <Tab>Card</Tab>
+            <Tab>01</Tab>
+            <Tab>02</Tab>
+            <Tab>03</Tab>
           </TabList>
           <TabPanels>
-            <TabPanel><LoginForm /></TabPanel>
-            <TabPanel><Github /></TabPanel>
-            <TabPanel>
-              <Card
-                value={value}
-                index={index}
-                Array={Array}
-                AddItem={AddItem}
-                handleDelete={onHandleDelete}
-                onHandleChange={onHandleChange}
-              />
-            </TabPanel>
-
+            <TabPanel>01</TabPanel>
+            <TabPanel>02</TabPanel>
+            <TabPanel>03</TabPanel>
           </TabPanels>
         </Tabs>
       </Flex>
