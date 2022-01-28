@@ -1,10 +1,13 @@
 import { Box, Center, HStack, Text } from '@chakra-ui/react'
+import { useContext } from 'react'
+import { Context } from '../src/context/context'
 
 type HeaderProps = {
   color: string,
 }
 
 export function Header({ color }: HeaderProps) {
+const {books} = useContext(Context)
   return (
     <>
       <Box
@@ -13,7 +16,7 @@ export function Header({ color }: HeaderProps) {
         color={color}
       >
         <HStack>
-          <Center><Text>Header</Text></Center>
+          <Center><Text>Header: {books}</Text></Center>
         </HStack>
       </Box>
     </>
