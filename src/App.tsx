@@ -3,7 +3,7 @@ import { Header } from './header'
 import { Footer } from './footer'
 import { Content } from './content'
 import { useHooks } from 'hooks/hooks'
-import ContextProvider from './context/context'
+import { ContextProvider } from './context/context'
 
 export function App() {
   const bgColor = useColorModeValue('gray.50', 'withealpha.50')

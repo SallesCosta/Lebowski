@@ -1,32 +1,33 @@
 import { useState, createContext, ReactNode, useContext, Dispatch } from 'react'
 
-function Context() {
-    type ContextProps = {
-        books: string
-        setBooks: Dispatch<React.SetStateAction<string>>
-        children?: ReactNode | ReactNode[]
-    }
-
-    const DataContext = createContext<ContextProps | null>(null)
-
-    function ContextProvider({ children }: ContextProps) {
-        const [books, setBooks] = useState('')
-
-        return (
-            <DataContext.Provider value={{ books, setBooks }}>
-                {children}
-            </DataContext.Provider>
-        )
-
-        // function useFF() {
-        //     const context = useContext(DataContext)
-        //     if (!context) {
-        //         throw new Error('@fdaciuk/react-ff: You must wrap your app with <FFProvider /> component')
-        //     }
-        //     return context
-    }
-    return { ContextProvider, DataContext }
+type ContextValue = {
+    books: string
+    setBooks: Dispatch<React.SetStateAction<string>>
 }
 
-export default Context
+type ContextProps = {
+    children: ReactNode | ReactNode[]
+}
+
+const DataContext = createContext<ContextValue | null>(null)
+
+export function ContextProvider({ children }: ContextProps) {
+    const [books, setBooks] = useState('')
+
+    return (
+        <DataContext.Provider value={{ books, setBooks }}>
+            {children}
+        </DataContext.Provider>
+    )
+
+}
+
+export function useBooks() {
+    const context = useContext(DataContext)
+    if (!context) {
+        throw new Error('You must wrap your app with <ContextProvider /> component')
+    }
+    return context
+}
+
 
